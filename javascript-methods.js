@@ -18,7 +18,6 @@ Array.prototype.myMap = function (callbackFn) {
       resultArray[index] = callbackFn(element, index, array);
     }
   });
-
   return resultArray;
 };
 
@@ -31,7 +30,6 @@ Array.prototype.myFilter = function (callbackFn) {
       filteredArray.push(element);
     }
   });
-
   return filteredArray;
 };
 
@@ -42,7 +40,6 @@ Array.prototype.mySome = function (callbackFn) {
       return true;
     }
   }
-
   return false;
 };
 
@@ -53,7 +50,6 @@ Array.prototype.myEvery = function (callbackFn) {
       return false;
     }
   }
-
   return true;
 };
 
@@ -65,42 +61,38 @@ Array.prototype.myReduce = function (callbackFn) {
     if (this[i] === undefined) continue;
     accumulator = callbackFn(accumulator, this[i], i, this);
   }
-
   return accumulator;
 };
 
 // INCLUDES //
-Array.prototype.myIncludes = function(searchElement) {
-  for(let i = 0; i < this.length; i++) {
-    if(this[i] === searchElement) return true;
+Array.prototype.myIncludes = function (searchElement) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === searchElement) return true;
   }
-
   return false;
 };
 
 // INDEXOF //
-Array.prototype.myIndexOf = function(searchElement) {
-  for(let i = 0; i < this.length; i++) {
-    if(this[i] === searchElement) return i;
+Array.prototype.myIndexOf = function (searchElement) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] === searchElement) return i;
   }
-
   return -1;
 };
 
 // LAST INDEX OF //
-Array.prototype.myLastIndexOf = function(searchElement) {
-  for(let i = this.length - 1; i >= 0; i--) {
-    if(this[i] === searchElement) return i;
+Array.prototype.myLastIndexOf = function (searchElement) {
+  for (let i = this.length - 1; i >= 0; i--) {
+    if (this[i] === searchElement) return i;
   }
-
   return -1;
 };
 
-Object.myKeys = function(object) {
+Object.myKeys = function (object) {
   let keys = [];
   let index = 0;
 
-  for(element in object) {
+  for (element in object) {
     keys[index] = element;
     index++;
   }
@@ -108,11 +100,11 @@ Object.myKeys = function(object) {
 };
 
 // VALUES //
-Object.myValues = function(object) {
+Object.myValues = function (object) {
   let keys = [];
   let index = 0;
 
-  for(element in object) {
+  for (element in object) {
     keys[index] = object[element];
     index++;
   }
