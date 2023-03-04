@@ -72,7 +72,7 @@ Array.prototype.myReduce = function (callbackFn) {
 // INCLUDES //
 Array.prototype.myIncludes = function (searchElement) {
   let found = false;
-  this.forEach(element => (element === searchElement ? (found = true) : null));
+  this.forEach(element => (element === searchElement ? (found = true) : -1));
   return found;
 };
 
@@ -80,7 +80,7 @@ Array.prototype.myIncludes = function (searchElement) {
 Array.prototype.myIndexOf = function (searchElement) {
   let index = -1;
   this.forEach((element, i) =>
-    element === searchElement && index === -1 ? (index = i) : null
+    element === searchElement && index === -1 ? (index = i) : -1
   );
   return index;
 };
@@ -89,7 +89,7 @@ Array.prototype.myIndexOf = function (searchElement) {
 Array.prototype.myLastIndexOf = function (searchElement) {
   let index = -1;
   this.forEach((element, i) =>
-    element === searchElement ? (index = i) : null
+    element === searchElement ? (index = i) : -1
   );
   return index;
 };
