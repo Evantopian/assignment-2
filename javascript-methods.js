@@ -24,22 +24,54 @@ Array.prototype.myMap = function(callbackFn) {
 
 // FILTER //
 Array.prototype.myFilter = function(callbackFn) {
-  // Place your code here.
+  const filteredArray = [];
+
+  this.forEach((element, index, array) => {
+    if(element !== undefined && callbackFn(element, index, array)) {
+      filteredArray.push(element);
+    }
+  });
+
+  return filteredArray;
 };
 
 // SOME //
 Array.prototype.mySome = function(callbackFn) {
-  // Place your code here.
+  let hasMatch = false;
+
+  this.forEach((element, index, array) => {
+    if(element !== undefined && callbackFn(element, index, array)) {
+      hasMatch = true;
+    }
+  });
+
+  return hasMatch;
 };
 
 // EVERY //
 Array.prototype.myEvery = function(callbackFn) {
-  // Place your code here.
+  let allMatch = true;
+
+  this.forEach((element, index, array) => {
+    if(element !== undefined && !callbackFn(element, index, array)) {
+      allMatch = false;
+    }
+  });
+
+  return allMatch;
 };
 
 // REDUCE //
-Array.prototype.myReduce = function(callbackFn) {
-  // Place your code here.
+Array.prototype.myReduce = function(callbackFn, initialValue) {
+  let accumulator = initialValue !== undefined ? initialValue : 0;
+
+  this.forEach((element, index, array) => {
+    if(element !== undefined) {
+      accumulator = callbackFn(accumulator, element, index, array);
+    }
+  });
+
+  return accumulator;
 };
 
 // INCLUDES //
