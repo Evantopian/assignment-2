@@ -24,15 +24,7 @@ Array.prototype.myMap = function(callbackFn) {
 
 // FILTER //
 Array.prototype.myFilter = function(callbackFn) {
-  const resultArray = [];
-
-  this.forEach((element, index, array) => {
-    if(element !== undefined && callbackFn(element, index, array)) {
-      resultArray.push(element);
-    }
-  });
-
-  return resultArray;
+  // Place your code here.
 };
 
 // SOME //
