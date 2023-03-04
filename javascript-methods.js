@@ -93,6 +93,3 @@ Array.prototype.myLastIndexOf = function (searchElement) {
   );
   return index;
 };
-
-
-export {myLastIndexOf};
