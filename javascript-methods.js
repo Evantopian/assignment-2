@@ -10,11 +10,11 @@ In this Assignment, we use the prototype constructor to add new methods to the A
 
 
 // MAP //
-Array.prototype.myMap = function(callbackFn) {
+Array.prototype.myMap = function (callbackFn) {
   const resultArray = [];
 
   this.forEach((element, index, array) => {
-    if(element !== undefined) {
+    if (element !== undefined) {
       resultArray[index] = callbackFn(element, index, array);
     }
   });
@@ -23,11 +23,11 @@ Array.prototype.myMap = function(callbackFn) {
 };
 
 // FILTER //
-Array.prototype.myFilter = function(callbackFn) {
+Array.prototype.myFilter = function (callbackFn) {
   const filteredArray = [];
 
   this.forEach((element, index, array) => {
-    if(element !== undefined && callbackFn(element, index, array)) {
+    if (element !== undefined && callbackFn(element, index, array)) {
       filteredArray.push(element);
     }
   });
@@ -36,65 +36,63 @@ Array.prototype.myFilter = function(callbackFn) {
 };
 
 // SOME //
-Array.prototype.mySome = function(callbackFn) {
-  let hasMatch = false;
-
-  this.forEach((element, index, array) => {
-    if(element !== undefined && callbackFn(element, index, array)) {
-      hasMatch = true;
+Array.prototype.mySome = function (callbackFn) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] !== undefined && callbackFn(this[i], i, this)) {
+      return true;
     }
-  });
+  }
 
-  return hasMatch;
+  return false;
 };
 
 // EVERY //
-Array.prototype.myEvery = function(callbackFn) {
-  let allMatch = true;
-
-  this.forEach((element, index, array) => {
-    if(element !== undefined && !callbackFn(element, index, array)) {
-      allMatch = false;
+Array.prototype.myEvery = function (callbackFn) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] !== undefined && !callbackFn(this[i], i, this)) {
+      return false;
     }
-  });
+  }
 
-  return allMatch;
+  return true;
 };
 
 // REDUCE //
-Array.prototype.myReduce = function(callbackFn, initialValue) {
-  let accumulator = initialValue !== undefined ? initialValue : 0;
+Array.prototype.myReduce = function (callbackFn) {
+  let accumulator = this[0];
 
-  this.forEach((element, index, array) => {
-    if(element !== undefined) {
-      accumulator = callbackFn(accumulator, element, index, array);
-    }
-  });
+  for (let i = 1; i < this.length; i++) {
+    if (this[i] === undefined) continue;
+    accumulator = callbackFn(accumulator, this[i], i, this);
+  }
 
   return accumulator;
 };
 
 // INCLUDES //
-Array.prototype.myIncludes = function(searchElement) {
-  // Place your code here.
+Array.prototype.myIncludes = function (searchElement) {
+  let found = false;
+  this.forEach(element => (element === searchElement ? (found = true) : null));
+  return found;
 };
 
 // INDEXOF //
-Array.prototype.myIndexOf = function(searchElement) {
-  // Place your code here.
+Array.prototype.myIndexOf = function (searchElement) {
+  let index = -1;
+  this.forEach((element, i) =>
+    element === searchElement && index === -1 ? (index = i) : null
+  );
+  return index;
 };
 
 // LASTINDEXOF //
-Array.prototype.myLastIndexOf = function(searchElement) {
-  // Place your code here.
+Array.prototype.myLastIndexOf = function (searchElement) {
+  let index = -1;
+  this.forEach((element, i) =>
+    element === searchElement ? (index = i) : null
+  );
+  return index;
 };
 
-// KEYS //
-Object.myKeys = function(object) {
-  // Place your code here.
-};
 
-// VALUES //
-Object.myValues = function(object) {
-  // Place your code here.
-};
+export {myLastIndexOf};
